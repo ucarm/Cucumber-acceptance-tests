@@ -1,0 +1,29 @@
+Feature: Product Information 
+
+Background: 
+	Given the user is on the home page 
+ @all	
+Scenario: Display the correct product name 
+	When the user selects Printed Summer Dress 
+	Then product information page should be displayed 
+	And product name should be Printed Summer Dress 
+@all	
+Scenario: Default size and count information 
+	When the user selects Printed Summer Dress 
+	Then correct default count size should be displayed 
+@all	
+Scenario: Display the correct product name by name 
+	When the user selects "Printed Summer Dress" 
+	Then product page title should contain "Printed Summer Dress" 
+	And product name should be "Printed Summer Dress" 
+@all	
+Scenario: Display the correct product name by name 2 
+	When the user selects "Printed Chiffon Dress" 
+	Then product page title should contain "Printed Chiffon Dress" 
+	And product name should be "Printed Chiffon Dress"
+
+@all
+Scenario: Change item count 
+	When the user selects "Printed Chiffon Dress" 
+	Then correct default count should be 1
+	And the user should be able to toggle the count
