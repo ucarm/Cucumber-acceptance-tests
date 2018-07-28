@@ -12,45 +12,45 @@ public class RegistrationPage {
 		PageFactory.initElements(Driver.getDriver(), this);
 	}
 
-	@FindBy(id = "customer_firstname")
+	@FindBy (id="customer_firstname")
 	public WebElement firstName;
-
-	@FindBy(id = "customer_lastname")
+	
+	@FindBy (id="customer_lastname")
 	public WebElement lastName;
-
-	@FindBy(id = "")
+	
+	@FindBy (id="")
 	public WebElement email;
-
-	@FindBy(id = "passwd")
+	
+	@FindBy (id="passwd")
 	public WebElement password;
-
-	@FindBy(id = "firstname")
+	
+	@FindBy (id="firstname")
 	public WebElement firstNameAddress;
-
-	@FindBy(id = "lastname")
+	
+	@FindBy (id="lastname")
 	public WebElement lastNameAddress;
-
-	@FindBy(id = "address1")
+	
+	@FindBy (id="address1")
 	public WebElement address;
-
-	@FindBy(id = "city")
+	
+	@FindBy (id="city")
 	public WebElement city;
-
-	@FindBy(id = "id_state")
+	
+	@FindBy (id="id_state")
 	public WebElement state;
-
-	@FindBy(id = "postcode")
+	
+	@FindBy (id="postcode")
 	public WebElement zipCode;
-
-	@FindBy(id = "phone_mobile")
+	
+	@FindBy (id="phone_mobile")
 	public WebElement mobilePhone;
-
-	@FindBy(id = "submitAccount")
+	
+	@FindBy (id="submitAccount")
 	public WebElement register;
 	
 	@FindBy (id="company")
 	public WebElement company;
-
+	
 	public Select stateList() {
 		return new Select(state);
 	}

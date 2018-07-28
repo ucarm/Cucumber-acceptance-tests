@@ -87,41 +87,33 @@ public class ProductInformaitonStepDefs {
 
 	}
 	
-	
 	@Then("the system should display the product information:")
-	  public void the_system_should_display_the_product_information(Map<String, String> product) {
-	    System.out.println(product);
-	    
-	    ItemPage itemPage = new ItemPage();
-	    
-	    String expectedName = product.get("name");
-	    System.out.println("Product name: "+expectedName);
-	    assertEquals(expectedName, itemPage.itemName.getText());
-	    
-	    String expectedPrice = product.get("price");
-	    System.out.println("Product price: "+expectedPrice);
-	    assertEquals(expectedPrice, itemPage.price.getText());
-	    
-	    String expectedSize = product.get("size");
-	    System.out.println("Product size: "+expectedSize);
-	    assertEquals(expectedSize, itemPage.size().getFirstSelectedOption().getText());
-	    
-	    String expectedCondition = product.get("condition");
-	    System.out.println("Product condition: "+expectedCondition);
-	    assertEquals(expectedCondition, itemPage.condition.getText());
-	    
-	    String expectedCount= product.get("count");
-	    System.out.println("Product count: "+expectedCount);
-	    assertEquals(expectedCount, itemPage.count.getAttribute("value"));
-	    
-	    
-	  }
+	public void the_system_should_display_the_product_information(Map<String, String> product) {
+		System.out.println(product);
+		
+		ItemPage itemPage = new ItemPage();
+		
+		String expectedName = product.get("name");
+		System.out.println("Product name: "+expectedName);
+		assertEquals(expectedName, itemPage.itemName.getText());
+		
+		String expectedPrice = product.get("price");
+		System.out.println("Product price: "+expectedPrice);
+		assertEquals(expectedPrice, itemPage.price.getText());
+		
+		String expectedSize = product.get("size");
+		System.out.println("Product size: "+expectedSize);
+		assertEquals(expectedSize, itemPage.size().getFirstSelectedOption().getText());
+		
+		String expectedCondition = product.get("condition");
+		System.out.println("Product condition: "+expectedCondition);
+		assertEquals(expectedCondition, itemPage.condition.getText());
+		
+		String expectedCount= product.get("count");
+		System.out.println("Product count: "+expectedCount);
+		assertEquals(expectedCount, itemPage.count.getAttribute("value"));
+		
+		
+	}
 
 }
-
-
-
-
-
-
-
