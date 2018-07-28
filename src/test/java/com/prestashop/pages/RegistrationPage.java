@@ -47,6 +47,9 @@ public class RegistrationPage {
 
 	@FindBy(id = "submitAccount")
 	public WebElement register;
+	
+	@FindBy (id="company")
+	public WebElement company;
 
 	public Select stateList() {
 		return new Select(state);

@@ -3,6 +3,7 @@ package com.prestashop.step_definitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Map;
 import java.util.Random;
 
 import com.prestashop.pages.HomePage;
@@ -12,7 +13,8 @@ import com.prestashop.utilities.Driver;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class ProductInformationsStepDefs {
+public class ProductInformaitonStepDefs {
+
 	HomePage homePage = new HomePage();
 
 	@When("the user selects Printed Summer Dress")
@@ -26,6 +28,7 @@ public class ProductInformationsStepDefs {
 		String expected = "Printed Summer Dress";
 
 		assertTrue(actual.contains(expected));
+
 	}
 
 	@Then("product name should be Printed Summer Dress")
@@ -60,24 +63,65 @@ public class ProductInformationsStepDefs {
 	@Then("correct default count should be {int}")
 	public void correct_default_count_should_be(Integer count) {
 		ItemPage itemPage = new ItemPage();
-		assertEquals(count, Integer.valueOf(itemPage.count.getAttribute("value")));
+		assertEquals(count + "", itemPage.count.getAttribute("value"));
+
 	}
 
 	@Then("the user should be able to toggle the count")
 	public void the_user_should_be_able_to_toggle_the_count() {
 		ItemPage itemPage = new ItemPage();
 		int number = new Random().nextInt(49) + 2;
+		
 		for (int i = 0; i <= number; i++) {
 			itemPage.plus.click();
-			assertEquals((i + 2) + "", itemPage.count.getAttribute("value"));
+			assertEquals(i + 2 + "", itemPage.count.getAttribute("value"));
 		}
+
 		for (int i = number; i >= 0; i--) {
 			itemPage.minus.click();
-			assertEquals((i + 1) + "", itemPage.count.getAttribute("value"));
+			assertEquals(i + 1 + "", itemPage.count.getAttribute("value"));
 		}
+		
 		itemPage.minus.click();
 		assertEquals("1", itemPage.count.getAttribute("value"));
 
 	}
+	
+	
+	@Then("the system should display the product information:")
+	  public void the_system_should_display_the_product_information(Map<String, String> product) {
+	    System.out.println(product);
+	    
+	    ItemPage itemPage = new ItemPage();
+	    
+	    String expectedName = product.get("name");
+	    System.out.println("Product name: "+expectedName);
+	    assertEquals(expectedName, itemPage.itemName.getText());
+	    
+	    String expectedPrice = product.get("price");
+	    System.out.println("Product price: "+expectedPrice);
+	    assertEquals(expectedPrice, itemPage.price.getText());
+	    
+	    String expectedSize = product.get("size");
+	    System.out.println("Product size: "+expectedSize);
+	    assertEquals(expectedSize, itemPage.size().getFirstSelectedOption().getText());
+	    
+	    String expectedCondition = product.get("condition");
+	    System.out.println("Product condition: "+expectedCondition);
+	    assertEquals(expectedCondition, itemPage.condition.getText());
+	    
+	    String expectedCount= product.get("count");
+	    System.out.println("Product count: "+expectedCount);
+	    assertEquals(expectedCount, itemPage.count.getAttribute("value"));
+	    
+	    
+	  }
 
 }
+
+
+
+
+
+
+
